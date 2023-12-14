@@ -42,7 +42,7 @@ public class FactTrigger : MonoBehaviour
 		isTalking = false;
 		dialogueTimer = 0;
 
-		dialogueTalkTime = 2f;
+		dialogueTalkTime = 3f;
 	}
 
 	private void Update()
