@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74870fc038ac5422eb88b5d5df3f897d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer_text: {fileID: 383223750}
+  timerText: {fileID: 383223750}
   timer: 60
   changeSceneButton: {fileID: 1583650435}
 --- !u!4 &83593470

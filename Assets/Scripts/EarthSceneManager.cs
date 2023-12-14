@@ -6,61 +6,28 @@ using UnityEngine.SceneManagement;
 
 public class EarthSceneManager : MonoBehaviour
 {
-    public TextMeshProUGUI timer_text;
+    public TextMeshProUGUI timerText;
     public float timer = 0.0f;
-    private float current_timer = 0.0f;
+    private float currentTimer = 0.0f;
     private float countInSeconds = 0.0f;
     public Button changeSceneButton;
-
-   
-   
 
     // Start is called before the first frame update
     void Start()
     {
         changeSceneButton.onClick.AddListener(ChangeScene);
-        current_timer = timer;
-        timer_text.text = "Timer: " + timer.ToString();
+        currentTimer = timer;
+        timerText.text = "Timer: " + timer.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Earth Update");
-        OperateTimer();
-    }
-
-    private void OperateTimer()
-    {
-        countInSeconds += Time.deltaTime;
-        if (countInSeconds >= 1.0f)
-        {
-            current_timer -= countInSeconds;
-            if (current_timer <= 0.0f)
-            {
-                HandleGameOver();
-            }
-            else
-            {
-                timer_text.text = "Timer: " + (int)current_timer;
-            }
-            countInSeconds = 0.0f;
-        }
-    }
-
-    private void HandleGameOver()
-    {
-        Debug.Log("Game Over");
+        SceneManagerHelper.UpdateTimer(timerText, ref currentTimer, ref countInSeconds);
     }
 
     private void ChangeScene()
     {
-        string sceneName = "Mars";
-
-       
-        PlayerPrefs.SetFloat("TimerValue", current_timer);
-
-        
-        SceneManager.LoadScene(sceneName);
+        SceneManagerHelper.ChangeScene("Mars", currentTimer);
     }
 }
