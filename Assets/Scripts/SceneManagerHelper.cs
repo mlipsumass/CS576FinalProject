@@ -88,9 +88,9 @@ public class SceneManagerHelper
 
 	public static void RestartGame()
 	{
-		Debug.Log("AAA");
 		currentTimer = 300;
-		is_mars_gem_achieved = false;
+		isMarsGemAquired = false;
+		isMoonGemAquired = false;
 		playerHealth = 1f;
 		UnityEngine.SceneManagement.SceneManager.LoadScene("Earth");
 	}
