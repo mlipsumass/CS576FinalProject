@@ -24,6 +24,8 @@ public class MoonSceneManager : MonoBehaviour
 
 	public ParticleSystem rocketLaunchParticles;
 
+	public GameOver gameOverScript;
+
 	public bool startSceneWithAnimation = true;
 
 	private float waitTime = 4f;
@@ -33,6 +35,7 @@ public class MoonSceneManager : MonoBehaviour
 	void Start()
 	{
 		SceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
+		SceneManagerHelper.AddGameOverScript(gameOverScript);
 
 		changeSceneButton.onClick.AddListener(StartRocketLaunchAnimation);
 

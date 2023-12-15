@@ -22,7 +22,10 @@ public class EarthSceneManager : MonoBehaviour
 
 	public ParticleSystem rocketLaunchParticles;
 
-	private float waitTime = 3f;
+	public GameOver gameOverScript;
+
+	public float waitTime = 4f;
+
 
 	// Start is called before the first frame update
 	void Start()
@@ -31,6 +34,8 @@ public class EarthSceneManager : MonoBehaviour
 		SceneManagerHelper.InitializeTimer(timerText, timer);
 
 		rocketAnimator.SetTrigger("stopLaunchLow");
+
+		SceneManagerHelper.AddGameOverScript(gameOverScript);
 	}
 
 	// Update is called once per frame
@@ -60,5 +65,9 @@ public class EarthSceneManager : MonoBehaviour
 		SceneManagerHelper.SetCurrentTimer(SceneManagerHelper.GetCurrentTimer());
 		SceneManagerHelper.ChangeScene("Moon");
 	}
+
+
+
+
 
 }
