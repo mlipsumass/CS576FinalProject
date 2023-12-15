@@ -9,12 +9,23 @@ public class SpiderMovement : MonoBehaviour
 
     public NavMeshAgent agent;
     public GameObject player;
-    public float proximityDistance = 25f;
+    public float proximityDistance = 30f;
     public Animator spiderAnimator;
-    public string isWalking = "isWalking";
-    public string isAttacking = "isAttacking";
-    public String isDead = "isDead";
+    private string isWalking = "isWalking";
+    private string isAttacking = "isAttacking";
+    private string isDead = "isDead";
+    private float attackDamage = 0.0001f;
+    private PlayerHealth playerHealth;
 
+    void Start()
+    {
+        playerHealth = player.GetComponent<PlayerHealth>();
+
+        if (playerHealth == null)
+        {
+            Debug.LogError("PlayerHealth Script not found !");
+        }
+    }
 
     // Update is called once per frame
     void Update()
@@ -25,30 +36,28 @@ public class SpiderMovement : MonoBehaviour
 
             if(Vector3.Distance(transform.position, playerposition) < proximityDistance)
             {
+                LookAtPlayer(playerposition);
+
                 Ray movePosition = Camera.main.ScreenPointToRay(playerposition);
                 if (Physics.Raycast(movePosition, out var hitInfo))
                 {
                     agent.SetDestination(hitInfo.point);
 
-                    LookAtPlayer(playerposition);
-
                     float distanceToPlayer = Vector3.Distance(transform.position, playerposition);
                     if (distanceToPlayer <= 10f)
                     {
-                        spiderAnimator.SetBool(isWalking, false);
-                        spiderAnimator.SetBool(isAttacking, true);
+                        AttackPlayer();
                     }
                     else
                     {
-                        spiderAnimator.SetBool(isAttacking, false);
                         spiderAnimator.SetBool(isWalking, true);
+                        spiderAnimator.SetBool(isAttacking, false);
                     }
                 }
                 else
                 {
                     agent.ResetPath();
                     spiderAnimator.SetBool(isWalking, false);
-                    spiderAnimator.SetBool(isAttacking, false);
                 }
             }
 
@@ -63,7 +72,28 @@ public class SpiderMovement : MonoBehaviour
     {
         Vector3 lookDirection = playerPosition - transform.position;
         lookDirection.y = 0; 
-        Quaternion rotation = Quaternion.LookRotation(lookDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2f);
+        Quaternion rotation = Quaternion.LookRotation(-lookDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*3f);
+    }
+
+    void AttackPlayer()
+    {
+        spiderAnimator.SetBool(isWalking, false);
+        spiderAnimator.SetBool(isAttacking, true);
+        
+        playerHealth.TakeDamage(attackDamage);
+
+        Invoke("HandleDeath", 1.5f);
+    }
+
+    void HandleDeath()
+    {
+        spiderAnimator.SetBool(isDead, true);
+        Invoke("DestroyObject", 1.5f);
+    }
+
+    void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }
