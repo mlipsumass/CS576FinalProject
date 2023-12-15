@@ -7,13 +7,12 @@ using UnityEngine;
 
 public class HealthPotionController : MonoBehaviour
 {
-    public string playerObjectName = "MarsPlayer";
     public float healthAmount = 20.0f;
 
     private void OnTriggerEnter(Collider other)
     {
    
-        if (other.gameObject.name == playerObjectName)
+        if (other.gameObject.name.Contains("Player"))
         {
             if (SceneManagerHelper.GetPlayerHealth() < 1.0f)
             {
