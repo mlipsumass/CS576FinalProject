@@ -42,8 +42,9 @@ public class MarsSceneManager : MonoBehaviour
 		SceneManagerHelper.UpdateTimer(timerText);
 		SceneManagerHelper.UpdateScrollBar(scrollBar);
 
-		if (SceneManagerHelper.is_mars_gem_achieved && showMessage)
+		if (SceneManagerHelper.isMarsGemAquired && showMessage)
 		{
+			Debug.Log("Inside if");
 			sceneMessageText.text = $"Congratulations! You've acquired Blue gem.";
 			StartCoroutine(ClearMessageAfterDelay(2.0f));
 		}
