@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Mars.unity
     guid: e8e467148783a4f1882d0d6a6da9cc26
+  - enabled: 1
+    path: Assets/Scenes/Earth.unity
+    guid: c440f677a54f2493d9d6a25cc90183c9
+  - enabled: 1
+    path: Assets/Scenes/Moon.unity
+    guid: a3f2a07c2a4e6411ab03f823f3e0b512
   m_configObjects: {}
