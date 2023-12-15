@@ -24,6 +24,8 @@ public class EarthSceneManager : MonoBehaviour
 
 	public GameOver gameOverScript;
 
+	public GameWon gameWonScript;
+
 	public float waitTime = 4f;
 
 
@@ -45,6 +47,13 @@ public class EarthSceneManager : MonoBehaviour
 		SceneManagerHelper.UpdateTimer(timerText);
 
 		SceneManagerHelper.UpdateScrollBar(scrollBar);
+
+		if (SceneManagerHelper.isMarsGemAquired &&
+			SceneManagerHelper.isMoonGemAquired /* And reached the final destination */)
+		{
+			gameWonScript.gameObject.SetActive(true);
+			gameWonScript.TriggerGameWon();
+		}
 
 	}
 

@@ -1790,6 +1790,37 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.333, y: 0.381, z: 0.67}
   m_TimeToStationary: 0.5
+--- !u!1 &871240981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 871240982}
+  m_Layer: 0
+  m_Name: Confetti
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &871240982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871240981}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 7.62, z: 9.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 448997314556440790}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &906997293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3144,6 +3175,7 @@ MonoBehaviour:
   rocketAnimator: {fileID: 8852783181986958804}
   rocketLaunchParticles: {fileID: 4011329988641435698}
   gameOverScript: {fileID: 1266364428249636444}
+  gameWonScript: {fileID: 0}
 --- !u!1 &1831557226
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,7 +4055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &333311443634847608
 Transform:
   m_ObjectHideFlags: 0
@@ -4143,6 +4175,7 @@ Transform:
   m_Children:
   - {fileID: 1089757483257678938}
   - {fileID: 319037574}
+  - {fileID: 871240982}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &479733225515781331
@@ -10768,7 +10801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &7755847466592408678
 Light:
   m_ObjectHideFlags: 0
