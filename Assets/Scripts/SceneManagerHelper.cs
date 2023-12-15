@@ -5,10 +5,12 @@ using System.Collections;
 
 public class SceneManagerHelper
 {
+
 	private static float currentTimer = 0.0f;
 	private static float countInSeconds = 0.0f;
 	private static float playerHealth = 1.0f;
-	public static bool is_mars_gem_achieved = false;
+	public static bool isMarsGemAquired = false;
+	public static bool isMoonGemAquired = false;
 
 	private static GameOver gameOverScript;
 
