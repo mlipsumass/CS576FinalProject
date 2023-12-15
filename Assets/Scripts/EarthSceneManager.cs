@@ -10,7 +10,6 @@ public class EarthSceneManager : MonoBehaviour
 	public TextMeshProUGUI timerText;
 	public GameObject scrollBar;
 	public float timer = 0.0f;
-	public Button changeSceneButton;
 
 	public Camera animationCamera;
 
@@ -27,7 +26,7 @@ public class EarthSceneManager : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		changeSceneButton.onClick.AddListener(StartRocketLaunchAnimation);
+		SceneManagerHelper.changeSceneTriggered = false;
 		SceneManagerHelper.InitializeTimer(timerText, timer);
 
 		rocketAnimator.SetTrigger("stopLaunchLow");
@@ -40,6 +39,12 @@ public class EarthSceneManager : MonoBehaviour
 		SceneManagerHelper.UpdateTimer(timerText);
 
 		SceneManagerHelper.UpdateScrollBar(scrollBar);
+		if (SceneManagerHelper.changeSceneTriggered)
+		{
+			Debug.Log("changescenetrigger is set to true");
+			StartRocketLaunchAnimation();
+			SceneManagerHelper.changeSceneTriggered = false;
+		}
 
 	}
 
@@ -57,7 +62,6 @@ public class EarthSceneManager : MonoBehaviour
 
 	private void ChangeScene()
 	{
-		SceneManagerHelper.SetCurrentTimer(SceneManagerHelper.GetCurrentTimer());
 		SceneManagerHelper.ChangeScene("Moon");
 	}
 

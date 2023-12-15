@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class SceneManagerHelper
@@ -10,7 +11,9 @@ public class SceneManagerHelper
     private static float playerHealth = 1.0f;
     public static bool isMarsGemAquired = false;
     public static bool isMoonGemAquired = false;
-   
+    public static bool changeSceneTriggered = false;
+
+
 
     public static float GetCurrentTimer()
     {
@@ -80,9 +83,23 @@ public class SceneManagerHelper
 
     public static void ChangeScene(string sceneName)
     {
+        SetCurrentTimer(currentTimer);
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 
-   
+    public static string GetActiveSceneName()
+    {
+
+        // Get the currently active scene
+        Scene currentScene = SceneManager.GetActiveScene();
+        // Print the scene name to the console
+        Debug.Log("Active Scene: " + currentScene.name);
+        // Retrieve the name of the active scene
+        return currentScene.name;
+
+        
+    }
+
+
 }
 

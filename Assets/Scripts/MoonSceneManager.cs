@@ -13,8 +13,6 @@ public class MoonSceneManager : MonoBehaviour
 
 	public GameObject scrollBar;
 
-	public Button changeSceneButton;
-
 	public Camera animationCamera;
 
 	public Camera playerCamera;
@@ -36,8 +34,7 @@ public class MoonSceneManager : MonoBehaviour
 	void Start()
 	{
 		SceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
-
-		changeSceneButton.onClick.AddListener(StartRocketLaunchAnimation);
+		SceneManagerHelper.changeSceneTriggered = false;
 
 		// Start player controller immediately
 		if (!startSceneWithAnimation)
@@ -64,6 +61,13 @@ public class MoonSceneManager : MonoBehaviour
 			sceneMessageText.text = $"Congratulations! You've acquired Red gem.";
 			StartCoroutine(ClearMessageAfterDelay(2.0f));
 		}
+
+		if (SceneManagerHelper.changeSceneTriggered)
+		{
+			Debug.Log("changescenetrigger is set to true");
+			StartRocketLaunchAnimation();
+			SceneManagerHelper.changeSceneTriggered = false;
+		}
 	}
 
 	// Begin the player controller after the animation plays
@@ -88,7 +92,6 @@ public class MoonSceneManager : MonoBehaviour
 
 	private void ChangeScene()
 	{
-		SceneManagerHelper.SetCurrentTimer(SceneManagerHelper.GetCurrentTimer());
 		SceneManagerHelper.ChangeScene("Mars");
 	}
 

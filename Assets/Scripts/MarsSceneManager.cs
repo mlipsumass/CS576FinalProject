@@ -30,6 +30,7 @@ public class MarsSceneManager : MonoBehaviour
 	void Start()
 	{
 		//SceneManagerHelper.SetPlayerHealth(0.8f);
+		SceneManagerHelper.changeSceneTriggered = false;
 		SceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
 
 
@@ -47,6 +48,13 @@ public class MarsSceneManager : MonoBehaviour
 			Debug.Log("Inside if");
 			sceneMessageText.text = $"Congratulations! You've acquired Blue gem.";
 			StartCoroutine(ClearMessageAfterDelay(2.0f));
+		}
+
+		if (SceneManagerHelper.changeSceneTriggered)
+		{
+			Debug.Log("changescenetrigger is set to true");
+			StartRocketLaunchAnimation();
+			SceneManagerHelper.changeSceneTriggered = false;
 		}
 	}
 
@@ -66,6 +74,12 @@ public class MarsSceneManager : MonoBehaviour
 		player.SetActive(false);
 		rocketAnimator.SetTrigger("launchTrigger");
 		rocketLaunchParticles.Play();
+		Invoke("ChangeScene", waitTime);
+	}
+
+	private void ChangeScene()
+	{
+		SceneManagerHelper.ChangeScene("Earth");
 	}
 
 
