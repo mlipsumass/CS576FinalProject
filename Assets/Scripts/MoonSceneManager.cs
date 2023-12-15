@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 public class MoonSceneManager : MonoBehaviour
 {
 	public TextMeshProUGUI timerText;
+	public TextMeshProUGUI sceneMessageText;
 
 	public GameObject scrollBar;
 
@@ -27,6 +28,8 @@ public class MoonSceneManager : MonoBehaviour
 	public bool startSceneWithAnimation = true;
 
 	private float waitTime = 4f;
+
+	private bool showMessage = true;
 
 
 	// Start is called before the first frame update
@@ -55,6 +58,12 @@ public class MoonSceneManager : MonoBehaviour
 	{
 		SceneManagerHelper.UpdateTimer(timerText);
 		SceneManagerHelper.UpdateScrollBar(scrollBar);
+
+		if (SceneManagerHelper.isMoonGemAquired && showMessage)
+		{
+			sceneMessageText.text = $"Congratulations! You've acquired Red gem.";
+			StartCoroutine(ClearMessageAfterDelay(2.0f));
+		}
 	}
 
 	// Begin the player controller after the animation plays
@@ -81,6 +90,16 @@ public class MoonSceneManager : MonoBehaviour
 	{
 		SceneManagerHelper.SetCurrentTimer(SceneManagerHelper.GetCurrentTimer());
 		SceneManagerHelper.ChangeScene("Mars");
+	}
+
+	IEnumerator ClearMessageAfterDelay(float delay)
+	{
+		// Wait for the specified delay
+		yield return new WaitForSeconds(delay);
+
+		// Clear the scene message text
+		sceneMessageText.text = "";
+		showMessage = false;
 	}
 
 }
