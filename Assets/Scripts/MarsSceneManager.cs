@@ -19,6 +19,12 @@ public class MarsSceneManager : MonoBehaviour
 	public Camera playerCamera;
 
 	public GameObject player;
+        if(SceneManagerHelper.isMarsGemAquired && showMessage)
+        {
+            sceneMessageText.text = $"Congratulations! You've acquired Blue gem.";
+            StartCoroutine(ClearMessageAfterDelay(2.0f));
+        }
+    }
 
 	public Animator rocketAnimator;
 
