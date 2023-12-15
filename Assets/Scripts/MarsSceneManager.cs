@@ -14,6 +14,7 @@ public class MarsSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SceneManagerHelper.SetPlayerHealth(0.8f);
         SceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
     }
 
