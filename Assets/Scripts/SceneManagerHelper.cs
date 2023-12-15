@@ -1,15 +1,32 @@
 using TMPro;
 using UnityEngine;
 
+
+
+
+
 public class SceneManagerHelper
 {
-    public static void InitializeTimer(TextMeshProUGUI timerText, ref float currentTimer, float initialTimerValue)
+    private static float currentTimer = 0.0f;
+    private static float countInSeconds = 0.0f;
+
+    public static float GetCurrentTimer()
     {
-        currentTimer = PlayerPrefs.GetFloat("TimerValue", initialTimerValue);
+        return currentTimer;
+    }
+
+    public static void SetCurrentTimer(float value)
+    {
+        currentTimer = value;
+    }
+
+    public void InitializeTimer(TextMeshProUGUI timerText, float initialTimerValue)
+    {
+        currentTimer = initialTimerValue;
         timerText.text = "Timer: " + (int)currentTimer;
     }
 
-    public static void UpdateTimer(TextMeshProUGUI timerText, ref float currentTimer, ref float countInSeconds)
+    public void UpdateTimer(TextMeshProUGUI timerText)
     {
         countInSeconds += Time.deltaTime;
         if (countInSeconds >= 1.0f)
@@ -32,9 +49,9 @@ public class SceneManagerHelper
         Debug.Log("Game Over");
     }
 
-    public static void ChangeScene(string sceneName, float currentTimerValue)
+    public void ChangeScene(string sceneName)
     {
-        PlayerPrefs.SetFloat("TimerValue", currentTimerValue);
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }
+

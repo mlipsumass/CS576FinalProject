@@ -4,22 +4,22 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+
 public class MarsSceneManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
-    public float timer = 0.0f;
-    private float currentTimer = 0.0f;
-    private float countInSeconds = 0.0f;
+    private SceneManagerHelper sceneManagerHelper = new SceneManagerHelper();
 
     // Start is called before the first frame update
     void Start()
     {
-        SceneManagerHelper.InitializeTimer(timerText, ref currentTimer, timer);
+        sceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
     }
 
     // Update is called once per frame
     void Update()
     {
-        SceneManagerHelper.UpdateTimer(timerText, ref currentTimer, ref countInSeconds);
+        sceneManagerHelper.UpdateTimer(timerText);
     }
 }

@@ -4,30 +4,33 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class EarthSceneManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
     public float timer = 0.0f;
-    private float currentTimer = 0.0f;
-    private float countInSeconds = 0.0f;
+    private SceneManagerHelper sceneManagerHelper = new SceneManagerHelper();
     public Button changeSceneButton;
 
     // Start is called before the first frame update
     void Start()
     {
         changeSceneButton.onClick.AddListener(ChangeScene);
-        currentTimer = timer;
-        timerText.text = "Timer: " + timer.ToString();
+        sceneManagerHelper.InitializeTimer(timerText, timer);
     }
 
     // Update is called once per frame
     void Update()
     {
-        SceneManagerHelper.UpdateTimer(timerText, ref currentTimer, ref countInSeconds);
+        sceneManagerHelper.UpdateTimer(timerText);
     }
+
+   
 
     private void ChangeScene()
     {
-        SceneManagerHelper.ChangeScene("Mars", currentTimer);
+        SceneManagerHelper.SetCurrentTimer(SceneManagerHelper.GetCurrentTimer());
+        sceneManagerHelper.ChangeScene("Mars");
     }
+
 }
