@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Matt Lips
 public class CameraController : MonoBehaviour
 {
 	public float rotationSpeed = 5f;

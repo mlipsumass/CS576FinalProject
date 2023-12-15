@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Matt Lips
 public class CompanionMoving : MonoBehaviour
 {
 
