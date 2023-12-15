@@ -12,18 +12,15 @@ public class HealthPotionController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision detected "  + SceneManagerHelper.GetPlayerHealth());
-
+   
         if (other.gameObject.name == playerObjectName)
         {
-            Debug.Log("Player trigger entered");
             if (SceneManagerHelper.GetPlayerHealth() < 1.0f)
             {
                 float newHealth = SceneManagerHelper.GetPlayerHealth() + healthAmount / 100.0f;
                 SceneManagerHelper.SetPlayerHealth(newHealth);
 
                 Destroy(gameObject);
-                Debug.Log("Bottle destroyed");
             }
             else
             {
