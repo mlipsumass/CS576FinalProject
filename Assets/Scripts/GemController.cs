@@ -10,14 +10,11 @@ public class GemController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Get the currently active scene
-        Scene currentScene = SceneManager.GetActiveScene();
-
+        
         // Retrieve the name of the active scene
-        sceneName = currentScene.name;
+        sceneName = SceneManagerHelper.GetActiveSceneName();
 
-        // Print the scene name to the console
-        Debug.Log("Active Scene: " + sceneName);
+        
     }
 
     // Update is called once per frame

@@ -9,10 +9,11 @@ namespace AstronautPlayer
 		private Animator anim;
 		private CharacterController controller;
 
-		public float speed = 600.0f;
+		public float speed = 900.0f;
 		public float turnSpeed = 400.0f;
 		private Vector3 moveDirection = Vector3.zero;
 		public float gravity = 20.0f;
+		public float jumpForce = 500.0f;
 
 		void Start () {
 			controller = GetComponent <CharacterController>();
@@ -28,6 +29,11 @@ namespace AstronautPlayer
 
 			if(controller.isGrounded){
 				moveDirection = transform.forward * Input.GetAxis("Vertical") * speed;
+				// Check for jump input
+				if (Input.GetKeyDown(KeyCode.Space))
+				{
+					moveDirection.y = jumpForce; 
+				}
 			}
 
 			float turn = Input.GetAxis("Horizontal");
