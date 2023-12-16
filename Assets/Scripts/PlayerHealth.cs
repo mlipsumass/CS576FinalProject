@@ -10,6 +10,13 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = SceneManagerHelper.GetPlayerHealth();
+        if (currentHealth == null)
+        {
+            Debug.Log("Cannot get health");
+        }
+        else{
+            Debug.Log(currentHealth);
+        }
     }
 
     public void TakeDamage(float damage)
@@ -19,7 +26,6 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-
             SceneManagerHelper.HandleGameOver();
             Debug.Log("Player is Dead!");
         }
