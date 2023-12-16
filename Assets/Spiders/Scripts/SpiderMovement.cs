@@ -10,17 +10,22 @@ public class SpiderMovement : MonoBehaviour
     public NavMeshAgent agent;
     public GameObject player;
     public Animator spiderAnimator;
+    public float proximityDistance = 50f;
+    public float attackDamage = 0.0001f;
     private float movementSpeed = 15.0f;
-    public float angularSpeed = 150f;
+    private float angularSpeed = 150f;
     private string isWalking = "isWalking";
-    private float proximityDistance = 35f;
     private string isAttacking = "isAttacking";
     private string isDead = "isDead";
-    private float attackDamage = 0.0001f;
     private PlayerHealth playerHealth;
+
+    private bool isWalkSoundPlayed = false;
+    private bool isAttackSoundPlayed = false;
 
     void Start()
     {
+        isAttackSoundPlayed = false;
+        isWalkSoundPlayed = false;
         playerHealth = player.GetComponent<PlayerHealth>();
 
         if (playerHealth == null)
@@ -55,6 +60,11 @@ public class SpiderMovement : MonoBehaviour
                     }
                     else
                     {
+                        if (!isWalkSoundPlayed)
+                        {
+                            FindObjectOfType<AudioManager>().Play("enemy_walk");
+                            isWalkSoundPlayed = true;
+                        }
                         spiderAnimator.SetBool(isWalking, true);
                         spiderAnimator.SetBool(isAttacking, false);
                     }
@@ -83,6 +93,12 @@ public class SpiderMovement : MonoBehaviour
 
     void AttackPlayer()
     {
+        if (!isAttackSoundPlayed)
+        {
+            FindObjectOfType<AudioManager>().Play("enemy_attack");
+            isAttackSoundPlayed = true;
+        }
+        
         spiderAnimator.SetBool(isWalking, false);
         spiderAnimator.SetBool(isAttacking, true);
         
