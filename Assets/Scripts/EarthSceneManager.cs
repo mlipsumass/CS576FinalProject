@@ -25,7 +25,11 @@ public class EarthSceneManager : MonoBehaviour
 
 	public GameWon gameWonScript;
 
+	public ParticleSystem confetti;
+
 	public float waitTime = 4f;
+
+	private bool confettiPlayed = false;
 
 
 	// Start is called before the first frame update
@@ -56,6 +60,11 @@ public class EarthSceneManager : MonoBehaviour
 		if (SceneManagerHelper.isMarsGemAquired &&
 			SceneManagerHelper.isMoonGemAquired /* And reached the final destination */)
 		{
+			if (!confettiPlayed)
+			{
+				confettiPlayed = true;
+				confetti.Play();
+			}
 			gameWonScript.gameObject.SetActive(true);
 			gameWonScript.TriggerGameWon();
 		}
