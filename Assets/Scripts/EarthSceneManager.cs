@@ -27,6 +27,9 @@ public class EarthSceneManager : MonoBehaviour
 
 	public ParticleSystem confetti;
 
+	public CapsuleCollider playerCollder;
+	public CapsuleCollider winCollider;
+
 	public float waitTime = 4f;
 
 	private bool confettiPlayed = false;
@@ -36,11 +39,11 @@ public class EarthSceneManager : MonoBehaviour
 	void Start()
 	{
 		SceneManagerHelper.changeSceneTriggered = false;
-		if(SceneManagerHelper.GetCurrentTimer() == 0.0f)
-        {
+		if (SceneManagerHelper.GetCurrentTimer() == 0.0f)
+		{
 			SceneManagerHelper.InitializeTimer(timerText, timer);
 		}
-		
+
 
 		rocketAnimator.SetTrigger("stopLaunchLow");
 
@@ -61,8 +64,9 @@ public class EarthSceneManager : MonoBehaviour
 			SceneManagerHelper.changeSceneTriggered = false;
 		}
 
-		if (Input.GetKeyDown("k") || (SceneManagerHelper.isMarsGemAquired &&
-			SceneManagerHelper.isMoonGemAquired) /* And reached the final destination */)
+		if (SceneManagerHelper.isMarsGemAquired &&
+			SceneManagerHelper.isMoonGemAquired &&
+			playerCollder.bounds.Intersects(winCollider.bounds))
 		{
 			if (!confettiPlayed)
 			{
