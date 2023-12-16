@@ -26,12 +26,16 @@ public class MarsSceneManager : MonoBehaviour
 
 	private float waitTime = 4f;
 
+	public GameOver gameOverScript;
+
 	// Start is called before the first frame update
 	void Start()
 	{
 		//SceneManagerHelper.SetPlayerHealth(0.8f);
 		SceneManagerHelper.changeSceneTriggered = false;
 		SceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
+
+		SceneManagerHelper.AddGameOverScript(gameOverScript);
 
 
 		Invoke("StartPlayerController", waitTime);

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.011159379, g: 0.010788273, b: 0.011193351, a: 1}
+  m_IndirectSpecularColor: {r: 0.011158687, g: 0.010788813, b: 0.011195832, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -160,6 +160,12 @@ MonoBehaviour:
   player: {fileID: 9023540781696331221}
   rocketAnimator: {fileID: 8726456685777841991}
   rocketLaunchParticles: {fileID: 3777084295863358113}
+  gameOverScript: {fileID: 0}
+  gameWonScript: {fileID: 0}
+  confetti: {fileID: 0}
+  playerCollder: {fileID: 9023540781696331224}
+  winCollider: {fileID: 5275157949379383088}
+  waitTime: 4
 --- !u!4 &83593470
 Transform:
   m_ObjectHideFlags: 0
@@ -169,7 +175,7 @@ Transform:
   m_GameObject: {fileID: 83593468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 471, y: 272, z: 0}
+  m_LocalPosition: {x: 446, y: 272, z: 574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1993,7 +1999,7 @@ Transform:
   m_GameObject: {fileID: 110214105293165032}
   serializedVersion: 2
   m_LocalRotation: {x: -0.00037394452, y: 0.011163646, z: -0.033475768, w: 0.99937713}
-  m_LocalPosition: {x: 755.3, y: 8, z: 236.4}
+  m_LocalPosition: {x: 478.7, y: -1.3, z: 412.8}
   m_LocalScale: {x: 7.179442, y: 7.179442, z: 7.179442}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12705,8 +12711,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
+  m_Radius: 0.64
+  m_Height: 3.51
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5382684344198643900
@@ -13795,6 +13801,11 @@ Light:
 --- !u!20 &9023540781696331223 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 372846431514948615, guid: 742e762c361be45058eec3ac4a979b24, type: 3}
+  m_PrefabInstance: {fileID: 9023540781696331220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &9023540781696331224 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 6753741023110826, guid: 742e762c361be45058eec3ac4a979b24, type: 3}
   m_PrefabInstance: {fileID: 9023540781696331220}
   m_PrefabAsset: {fileID: 0}
 --- !u!124 &9043831643765181886
