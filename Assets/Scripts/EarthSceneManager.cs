@@ -21,19 +21,33 @@ public class EarthSceneManager : MonoBehaviour
 
 	public ParticleSystem rocketLaunchParticles;
 
-	private float waitTime = 3f;
+	public GameOver gameOverScript;
+
+	public GameWon gameWonScript;
+
+	public ParticleSystem confetti;
+
+	public CapsuleCollider playerCollder;
+	public CapsuleCollider winCollider;
+
+	public float waitTime = 4f;
+
+	private bool confettiPlayed = false;
+
 
 	// Start is called before the first frame update
 	void Start()
 	{
 		SceneManagerHelper.changeSceneTriggered = false;
-		if(SceneManagerHelper.GetCurrentTimer() == 0.0f)
-        {
+		if (SceneManagerHelper.GetCurrentTimer() == 0.0f)
+		{
 			SceneManagerHelper.InitializeTimer(timerText, timer);
 		}
-		
+
 
 		rocketAnimator.SetTrigger("stopLaunchLow");
+
+		SceneManagerHelper.AddGameOverScript(gameOverScript);
 	}
 
 	// Update is called once per frame
@@ -48,6 +62,19 @@ public class EarthSceneManager : MonoBehaviour
 			Debug.Log("changescenetrigger is set to true");
 			StartRocketLaunchAnimation();
 			SceneManagerHelper.changeSceneTriggered = false;
+		}
+
+		if (SceneManagerHelper.isMarsGemAquired &&
+			SceneManagerHelper.isMoonGemAquired &&
+			playerCollder.bounds.Intersects(winCollider.bounds))
+		{
+			if (!confettiPlayed)
+			{
+				confettiPlayed = true;
+				confetti.Play();
+			}
+			gameWonScript.gameObject.SetActive(true);
+			gameWonScript.TriggerGameWon();
 		}
 
 	}
@@ -68,5 +95,9 @@ public class EarthSceneManager : MonoBehaviour
 	{
 		SceneManagerHelper.ChangeScene("Moon");
 	}
+
+
+
+
 
 }
