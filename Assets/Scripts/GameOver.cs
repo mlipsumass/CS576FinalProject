@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Matt Lips
 public class GameOver : MonoBehaviour
 {
 
