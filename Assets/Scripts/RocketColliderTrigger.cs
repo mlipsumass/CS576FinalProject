@@ -4,20 +4,7 @@ using UnityEngine;
 
 public class SceneEndZoneTrigger : MonoBehaviour
 {
-    public Light finish_zone_light;
-    string sceneName;
-    // Use this for initialization
-    void Start()
-    {
-      
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    // used for light trigger
     private void OnTriggerEnter(Collider other)
     {
         

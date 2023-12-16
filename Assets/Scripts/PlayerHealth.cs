@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public SceneManagerHelper sceneManager;
-    public float currentHealth;
+    private float currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+
+            SceneManagerHelper.HandleGameOver();
             Debug.Log("Player is Dead!");
         }
     }
