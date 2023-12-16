@@ -64,7 +64,7 @@ public class EarthSceneManager : MonoBehaviour
 			SceneManagerHelper.changeSceneTriggered = false;
 		}
 
-		if (Input.GetKeyDown("k") || (SceneManagerHelper.isMarsGemAquired &&
+		if ((SceneManagerHelper.isMarsGemAquired &&
 			SceneManagerHelper.isMoonGemAquired &&
 			playerCollder.bounds.Intersects(winCollider.bounds)))
 		{
