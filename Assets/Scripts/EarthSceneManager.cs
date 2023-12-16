@@ -57,8 +57,8 @@ public class EarthSceneManager : MonoBehaviour
 			SceneManagerHelper.changeSceneTriggered = false;
 		}
 
-		if (SceneManagerHelper.isMarsGemAquired &&
-			SceneManagerHelper.isMoonGemAquired /* And reached the final destination */)
+		if (Input.GetKeyDown("k") || (SceneManagerHelper.isMarsGemAquired &&
+			SceneManagerHelper.isMoonGemAquired) /* And reached the final destination */)
 		{
 			if (!confettiPlayed)
 			{

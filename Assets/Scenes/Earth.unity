@@ -162,6 +162,7 @@ MonoBehaviour:
   rocketLaunchParticles: {fileID: 3777084295863358113}
   gameOverScript: {fileID: 1266364426976789287}
   gameWonScript: {fileID: 2057035290}
+  confetti: {fileID: 1877545994}
   waitTime: 3
 --- !u!4 &83593470
 Transform:
@@ -1473,7 +1474,7 @@ Transform:
   m_GameObject: {fileID: 1877545990}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000016292068}
-  m_LocalPosition: {x: 0, y: 1.86, z: 3.6}
+  m_LocalPosition: {x: 0.22, y: 3.43, z: 4.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1646,7 +1647,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.5
+      scalar: 4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
