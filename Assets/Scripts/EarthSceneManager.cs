@@ -64,9 +64,9 @@ public class EarthSceneManager : MonoBehaviour
 			SceneManagerHelper.changeSceneTriggered = false;
 		}
 
-		if (SceneManagerHelper.isMarsGemAquired &&
+		if ((SceneManagerHelper.isMarsGemAquired &&
 			SceneManagerHelper.isMoonGemAquired &&
-			playerCollder.bounds.Intersects(winCollider.bounds))
+			playerCollder.bounds.Intersects(winCollider.bounds)))
 		{
 			if (!confettiPlayed)
 			{
@@ -75,6 +75,7 @@ public class EarthSceneManager : MonoBehaviour
 			}
 			gameWonScript.gameObject.SetActive(true);
 			gameWonScript.TriggerGameWon();
+			FindObjectOfType<AudioManager>().Play("game_win");
 		}
 
 	}
