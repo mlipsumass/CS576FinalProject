@@ -79,6 +79,7 @@ public class MarsSceneManager : MonoBehaviour
 		rocketAnimator.SetTrigger("launchTrigger");
 		rocketLaunchParticles.Play();
 		Invoke("ChangeScene", waitTime);
+		FindObjectOfType<AudioManager>().Play("rocket_launch");
 	}
 
 	private void ChangeScene()

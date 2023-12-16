@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.011158687, g: 0.010788813, b: 0.011195832, a: 1}
+  m_IndirectSpecularColor: {r: 0.011159379, g: 0.010788273, b: 0.011193351, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10072,6 +10072,7 @@ GameObject:
   - component: {fileID: 3550457803457906737}
   - component: {fileID: 8745909070553037523}
   - component: {fileID: 1744633186198957877}
+  - component: {fileID: 8745909070553037524}
   m_Layer: 0
   m_Name: window_006
   m_TagString: Untagged
@@ -10824,6 +10825,14 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6734922982333376950}
   m_Mesh: {fileID: 4300024, guid: 4891bd9dc190fc94a838d0409002e3e2, type: 3}
+--- !u!81 &8745909070553037524
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6734922982333376950}
+  m_Enabled: 1
 --- !u!1 &8804485364965392259
 GameObject:
   m_ObjectHideFlags: 0

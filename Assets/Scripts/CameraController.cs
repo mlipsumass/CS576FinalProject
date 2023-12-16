@@ -16,11 +16,11 @@ public class CameraController : MonoBehaviour
 	void Update()
 	{
 		// Hide the mouse cursor when clicking
-		if (Input.GetMouseButtonDown(0))
-		{
-			Cursor.lockState = CursorLockMode.Locked;
-			Cursor.visible = false;
-		}
+		// if (Input.GetMouseButtonDown(0))
+		// {
+		// 	Cursor.lockState = CursorLockMode.Locked;
+		// 	Cursor.visible = false;
+		// }
 
 		// Mouse rotation
 		float mouseX = Input.GetAxis("Mouse X");
@@ -34,6 +34,7 @@ public class CameraController : MonoBehaviour
 		Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
 		Vector3 moveAmount = moveDirection * movementSpeed * Time.deltaTime;
 
+		FindObjectOfType<AudioManager>().Play("enemy_attack");
 		transform.Translate(moveAmount);
 
 		// Arrow key vertical movement

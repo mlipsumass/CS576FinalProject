@@ -88,6 +88,7 @@ public class EarthSceneManager : MonoBehaviour
 		rocketAnimator.SetTrigger("launchTrigger");
 		rocketLaunchParticles.Play();
 		Invoke("ChangeScene", waitTime);
+		FindObjectOfType<AudioManager>().Play("rocket_launch");
 	}
 
 
