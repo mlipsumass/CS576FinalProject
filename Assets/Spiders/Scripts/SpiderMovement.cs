@@ -9,9 +9,11 @@ public class SpiderMovement : MonoBehaviour
 
     public NavMeshAgent agent;
     public GameObject player;
-    public float proximityDistance = 30f;
     public Animator spiderAnimator;
+    private float movementSpeed = 15.0f;
+    public float angularSpeed = 150f;
     private string isWalking = "isWalking";
+    private float proximityDistance = 35f;
     private string isAttacking = "isAttacking";
     private string isDead = "isDead";
     private float attackDamage = 0.0001f;
@@ -25,6 +27,9 @@ public class SpiderMovement : MonoBehaviour
         {
             Debug.LogError("PlayerHealth Script not found !");
         }
+
+        agent.speed = movementSpeed;
+        agent.angularSpeed = angularSpeed;
     }
 
     // Update is called once per frame
@@ -70,10 +75,10 @@ public class SpiderMovement : MonoBehaviour
 
     void LookAtPlayer(Vector3 playerPosition)
     {
-        Vector3 lookDirection = playerPosition - transform.position;
+        Vector3 lookDirection = transform.position - playerPosition ;
         lookDirection.y = 0; 
-        Quaternion rotation = Quaternion.LookRotation(-lookDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*3f);
+        Quaternion rotation = Quaternion.LookRotation(lookDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime*2f);
     }
 
     void AttackPlayer()
@@ -83,13 +88,13 @@ public class SpiderMovement : MonoBehaviour
         
         playerHealth.TakeDamage(attackDamage);
 
-        Invoke("HandleDeath", 1.5f);
+        Invoke("HandleDeath", 2f);
     }
 
     void HandleDeath()
     {
         spiderAnimator.SetBool(isDead, true);
-        Invoke("DestroyObject", 1.5f);
+        Invoke("DestroyObject", 2f);
     }
 
     void DestroyObject()
