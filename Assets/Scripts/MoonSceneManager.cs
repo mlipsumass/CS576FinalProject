@@ -58,7 +58,7 @@ public class MoonSceneManager : MonoBehaviour
 
 		if (SceneManagerHelper.isMoonGemAquired && showMessage)
 		{
-			sceneMessageText.text = $"Congratulations! You've acquired Red gem.";
+			sceneMessageText.text = $"Congratulations! You've acquired Red gem. Go back to the spaceship ";
 			StartCoroutine(ClearMessageAfterDelay(2.0f));
 		}
 
