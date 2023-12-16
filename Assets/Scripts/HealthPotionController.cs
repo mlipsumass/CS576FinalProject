@@ -18,7 +18,7 @@ public class HealthPotionController : MonoBehaviour
             {
                 float newHealth = SceneManagerHelper.GetPlayerHealth() + healthAmount / 100.0f;
                 SceneManagerHelper.SetPlayerHealth(newHealth);
-
+                FindObjectOfType<AudioManager>().Play("got_pill");
                 Destroy(gameObject);
             }
             else

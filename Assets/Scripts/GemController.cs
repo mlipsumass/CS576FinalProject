@@ -37,7 +37,7 @@ public class GemController : MonoBehaviour
             {
                 SceneManagerHelper.isMoonGemAquired = true;
             }
-
+            FindObjectOfType<AudioManager>().Play("got_gem");
             Destroy(gameObject);
         }
         else
