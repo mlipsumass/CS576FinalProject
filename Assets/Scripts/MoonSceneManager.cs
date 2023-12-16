@@ -36,13 +36,9 @@ public class MoonSceneManager : MonoBehaviour
 	void Start()
 	{
 		SceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
-<<<<<<< HEAD
 		SceneManagerHelper.AddGameOverScript(gameOverScript);
 
-		changeSceneButton.onClick.AddListener(StartRocketLaunchAnimation);
-=======
 		SceneManagerHelper.changeSceneTriggered = false;
->>>>>>> main
 
 		// Start player controller immediately
 		if (!startSceneWithAnimation)
