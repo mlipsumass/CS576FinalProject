@@ -35,6 +35,7 @@ public class GameOver : MonoBehaviour
 		{
 			return;
 		}
+		FindObjectOfType<AudioManager>().Play("game_over");
 		isGameOver = true;
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
