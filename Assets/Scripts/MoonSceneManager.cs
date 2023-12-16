@@ -36,6 +36,8 @@ public class MoonSceneManager : MonoBehaviour
 	void Start()
 	{
 		SceneManagerHelper.InitializeTimer(timerText, SceneManagerHelper.GetCurrentTimer());
+
+		Debug.Log("A");
 		SceneManagerHelper.AddGameOverScript(gameOverScript);
 
 		SceneManagerHelper.changeSceneTriggered = false;

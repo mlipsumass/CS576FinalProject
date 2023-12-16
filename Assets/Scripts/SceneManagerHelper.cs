@@ -84,6 +84,7 @@ public class SceneManagerHelper
 
 	public static void AddGameOverScript(GameOver gameOverScript)
 	{
+		Debug.Log("B");
 		SceneManagerHelper.gameOverScript = gameOverScript;
 	}
 

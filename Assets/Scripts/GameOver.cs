@@ -34,6 +34,7 @@ public class GameOver : MonoBehaviour
 		{
 			return;
 		}
+		isGameOver = true;
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
 		gameUI.SetActive(false);
