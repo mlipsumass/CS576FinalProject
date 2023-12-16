@@ -46,7 +46,7 @@ public class MarsSceneManager : MonoBehaviour
 		if (SceneManagerHelper.isMarsGemAquired && showMessage)
 		{
 			Debug.Log("Inside if");
-			sceneMessageText.text = $"Congratulations! You've acquired Blue gem.";
+			sceneMessageText.text = $"Congratulations! You've acquired Blue gem. Go back to the spaceship";
 			StartCoroutine(ClearMessageAfterDelay(2.0f));
 		}
 

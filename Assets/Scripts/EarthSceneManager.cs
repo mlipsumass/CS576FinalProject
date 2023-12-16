@@ -27,7 +27,11 @@ public class EarthSceneManager : MonoBehaviour
 	void Start()
 	{
 		SceneManagerHelper.changeSceneTriggered = false;
-		SceneManagerHelper.InitializeTimer(timerText, timer);
+		if(SceneManagerHelper.GetCurrentTimer() == 0.0f)
+        {
+			SceneManagerHelper.InitializeTimer(timerText, timer);
+		}
+		
 
 		rocketAnimator.SetTrigger("stopLaunchLow");
 	}
