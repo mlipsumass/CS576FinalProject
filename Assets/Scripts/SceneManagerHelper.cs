@@ -47,7 +47,7 @@ public class SceneManagerHelper
 		if (countInSeconds >= 1.0f)
 		{
 			currentTimer -= countInSeconds;
-			if (currentTimer <= 0.0f)
+			if (currentTimer <= 0.0f || playerHealth == 0.0f)
 			{
 				HandleGameOver();
 			}
@@ -84,7 +84,6 @@ public class SceneManagerHelper
 
 	public static void AddGameOverScript(GameOver gameOverScript)
 	{
-		Debug.Log("B");
 		SceneManagerHelper.gameOverScript = gameOverScript;
 	}
 
